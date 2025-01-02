@@ -1,7 +1,65 @@
 # Astro Markdown Demo
-Demo of processing markdown server-side, at runtime in Astro -- OG context: [discord question](https://discord.com/channels/830184174198718474/1324262352748679208)
-
 https://astro-md.jldec.me/
+
+### Markdown
+```md
+---
+title: Server Render Markdown
+excerpt: '> A demo of processing **markdown** server-side'
+---
+
+This is a demo of processing markdown server-side, at runtime in Astro.
+
+The context for this exercise was this [discord question](https://discord.com/channels/830184174198718474/1324262352748679208).
+```
+
+### HTML
+```html
+<article class="prose mx-auto p-4">
+  <h1>Server Render Markdown</h1>
+  <div>
+    <blockquote>
+      <p>A demo of processing <strong>markdown</strong> server-side</p>
+    </blockquote>
+  </div>
+  <a href="/" class="mt-4">&lt;&lt; Back</a>
+  <p>This is a demo of processing markdown server-side, at runtime in Astro.</p>
+  <p>
+    The context for this exercise was this
+    <a
+      href="https://discord.com/channels/830184174198718474/1324262352748679208"
+      >discord question</a
+    >.
+  </p>
+</article>
+```
+
+### src/pages/markdown/[id].astro
+```astro
+---
+...
+// Render markdown excerpt
+// Disable syntax highlighting to avoid calling createShikiInternal in Cloudflare Workers.
+const processor = await createMarkdownProcessor({
+  ...markdownConfigDefaults,
+  syntaxHighlight: false,
+});
+const result = await processor.render(post.data.excerpt, {
+  frontmatter: post.data,
+});
+console.log(`rendered excerpt: ${post.data.excerpt}`);
+const excerptHtml = result.code;
+---
+
+<Layout title={post.data.title}>
+  <article class="prose mx-auto p-4">
+    <h1>{post.data.title}</h1>
+    <div set:html={excerptHtml} />
+    <a href="/" class="mt-4">&lt;&lt; Back</a>
+    <Content />
+  </article>
+</Layout>
+```
 
 ### Usage
 | Command                   | Action                                           |
