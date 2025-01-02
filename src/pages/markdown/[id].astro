@@ -19,17 +19,16 @@ const processor = await createMarkdownProcessor({
   ...markdownConfigDefaults,
   syntaxHighlight: false,
 });
-const result = await processor.render(post.data.excerpt, {
+const renderedExcerpt = await processor.render(post.data.excerpt, {
   frontmatter: post.data,
 });
 console.log(`rendered excerpt: ${post.data.excerpt}`);
-const excerptHtml = result.code;
 ---
 
 <Layout title={post.data.title}>
   <article class="prose mx-auto p-4">
     <h1>{post.data.title}</h1>
-    <div set:html={excerptHtml} />
+    <div set:html={renderedExcerpt.code} />
     <a href="/" class="mt-4">&lt;&lt; Back</a>
     <Content />
   </article>
