@@ -1,8 +1,7 @@
 # Astro Markdown Demo
+Demo of processing markdown server-side, at runtime in Astro -- OG context: [discord question](https://discord.com/channels/830184174198718474/1324262352748679208)
 
-This is demo of processing markdown server-side, at runtime in Astro.
-
-The context for this exercise was this [discord question](https://discord.com/channels/830184174198718474/1324262352748679208).
+https://astro-md.jldec.me/
 
 ### Usage
 | Command                   | Action                                           |
