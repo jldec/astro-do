@@ -1,0 +1,19 @@
+---
+import { getEntry, render } from 'astro:content';
+import Layout from '~/layouts/Layout.astro';
+
+// https://docs.astro.build/en/guides/content-collections/#building-for-server-output-ssr
+const { id } = Astro.params;
+if (id === undefined) return Astro.redirect('/404');
+const post = await getEntry('markdown', id);
+if (post === undefined) return Astro.redirect('/404');
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title}>
+  <article class="prose mx-auto p-4">
+    <h1>{post.data.title}</h1>
+    <a href="/">&lt;&lt; Back</a>
+    <Content />
+  </article>
+</Layout>

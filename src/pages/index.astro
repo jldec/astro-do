@@ -1,11 +1,27 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import Layout from '~/layouts/Layout.astro';
+import AstroLogo from '~/components/AstroLogo.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const posts = await getCollection('markdown');
 ---
 
 <Layout>
-	<Welcome />
+  <AstroLogo />
+  <main class="prose mx-auto p-2">
+    <h1>Markdown Posts</h1>
+    <ul class="">
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/markdown/${post.id}`}>{post.data.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+    <h3>GitHub</h3>
+    <a href="https://github.com/jldec/astro-md"
+      >https://github.com/jldec/astro-md</a
+    >
+  </main>
 </Layout>
