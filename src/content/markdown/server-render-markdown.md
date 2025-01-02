@@ -1,6 +1,6 @@
 ---
 title: Server Render Markdown
-excerpt: "> A demo of processing **markdown** server-side"
+excerpt: '> A demo of processing **markdown** server-side'
 ---
 
 This is a demo of processing markdown server-side, at runtime in Astro.
