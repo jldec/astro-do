@@ -9,6 +9,7 @@ const markdown = defineCollection({
   schema: () =>
     z.object({
       title: z.string(),
+      excerpt: z.string(), // Markdown
     }),
 });
 
