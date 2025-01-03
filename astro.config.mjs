@@ -5,8 +5,12 @@ import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://astro-md.jldec.me/',
-  adapter: cloudflare(),
+  site: 'https://astro-do.jldec.me/',
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true,
+    },
+  }),
   output: 'server',
   build: {
     format: 'file',

@@ -9,7 +9,7 @@ const posts = await getCollection('markdown');
 <Layout>
   <AstroLogo />
   <main class="prose mx-auto p-2">
-    <h1>Markdown Posts</h1>
+    <h3>Markdown</h3>
     <ul class="">
       {
         posts.map((post) => (
@@ -20,8 +20,8 @@ const posts = await getCollection('markdown');
       }
     </ul>
     <h3>GitHub</h3>
-    <a href="https://github.com/jldec/astro-md"
-      >https://github.com/jldec/astro-md</a
+    <a href="https://github.com/jldec/astro-do"
+      >https://github.com/jldec/astro-do</a
     >
   </main>
 </Layout>
