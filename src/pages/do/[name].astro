@@ -1,0 +1,38 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import { DurableObject } from "cloudflare:workers";
+
+// Durable Object boilerplate from:
+// https://developers.cloudflare.com/durable-objects/get-started/tutorial-with-sql-api/
+
+const { env } = Astro.locals.runtime;
+console.log(env);
+
+export class MyDurableObject extends DurableObject {
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env)
+  }
+
+  async sayHello() {
+    let result = this.ctx.storage.sql
+      .exec("SELECT 'Hello' as greeting")
+      .one();
+    return result.greeting;
+  }
+}
+
+// entry point for the worker fetch handler on this route
+const { name } = Astro.params;
+if (name === undefined) return Astro.redirect('/404');
+
+// let id = env.MY_DURABLE_OBJECT.idFromName(name);
+// let stub = env.MY_DURABLE_OBJECT.get(id);
+// let greeting = await stub.sayHello();
+---
+
+<Layout>
+  <main class="prose mx-auto p-2">
+    <h3>{'greeting'} {name}</h3>
+    <a href="/">&lt;&lt; Back to home page</a>
+  </main>
+</Layout>
