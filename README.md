@@ -14,9 +14,11 @@ Deployed to Cloudflare Workers.
 | `pnpm logs`               | wrangler tail                                    |
 
 ### To learn more
-- [Astro docs](https://docs.astro.build) | [Astro Discord](https://astro.build/chat).
-- [Cloudflare Workers docs](https://developers.cloudflare.com/workers/) | [Cloudflare Discord](https://discord.cloudflare.com/)
+- [Astro docs](https://docs.astro.build)
+- [Astro Discord](https://astro.build/chat).
+- [Cloudflare Workers docs](https://developers.cloudflare.com/workers/)
 - [Durable Objects docs](https://developers.cloudflare.com/durable-objects/)
+- [Cloudflare Discord](https://discord.cloudflare.com/)
 
 ---
 Copyright (c) 2025-present, Jürgen Leschner (@jldec)
